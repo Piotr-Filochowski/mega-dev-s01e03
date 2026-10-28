@@ -4,14 +4,14 @@ title: '#4471 · three problems, not one'
 owner: support desk
 status: known
 reviewed: 2026-10-28
-signature: Piotr Filochowski
+signature: v1.eyJzdG9yeSI6Im9mZiIsInN1YiI6IjI4NjciLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzIwNzgxMSwiZXhwIjoxNzkzMjk0MjExfQ.TRhECfYzlmf3XgeuGUU3kzpCQi0G9vX5hfIB_oSjHFU
 ---
 
 <script>
   import ProblemSplit from '#lib/kb/ProblemSplit.svelte';
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
-  const signature = 'Piotr Filochowski';
+  const signature = 'v1.eyJzdG9yeSI6Im9mZiIsInN1YiI6IjI4NjciLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzIwNzgxMSwiZXhwIjoxNzkzMjk0MjExfQ.TRhECfYzlmf3XgeuGUU3kzpCQi0G9vX5hfIB_oSjHFU';
 </script>
 
 [#4471](/kb/incidents/4471) was merged as one issue: "dates parse mm/dd in eu locales". Read one by one,
