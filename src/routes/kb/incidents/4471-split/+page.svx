@@ -1,0 +1,44 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: support desk
+status: known
+reviewed: 2026-10-28
+signature: Piotr Filochowski
+---
+
+<script>
+  import ProblemSplit from '#lib/kb/ProblemSplit.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  const signature = 'Piotr Filochowski';
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one issue: "dates parse mm/dd in eu locales". Read one by one,
+its reports hold three different problems. Each needs its own ticket and its own fix.
+
+<Callout>
+Not one issue. Three, with three fixes. Fixing the parser alone closes only the largest part.
+</Callout>
+
+## The split
+
+<ProblemSplit ticket={4471} />
+
+## The problems
+
+1. **Parser reads dates month first.** Day-first tenants see day and month swapped, in every channel. This is the bug #4471 describes.
+2. **Booking-v3 form hint.** The form prints `MM/DD/YYYY` under the date field. People in day-first countries type what the hint says, and the form reads it their way. Form channel only. Intake tagged many of these `parser`, because tenant and form are not part of the tag.
+3. **Dates move by one day.** Nothing is swapped. The reports talk about one day off, only June, an invite before the booking, and one meeting on two days for two time zones. This points to a time-zone or daylight-saving bug.
+
+## Why one ticket was wrong
+
+Decision [0001](/kb/decisions/0001-dedupe-by-subject) merges on subject alone, so reports with the same subject
+and different causes land together. Counts here come from the report data, tenant locale and booking form, not from subject or intake tag.
+
+## Lessons
+
+- A big ticket can hide several bugs. Check the cause before you merge.
+- Count each problem once, with the reports that belong to it.
+
+<RenderStamp {signature} />
