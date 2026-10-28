@@ -8,15 +8,15 @@ owner: support desk · status: known · reviewed: 2026-10-28
 
 ## The split
 
-**412** reports merged into #4471 · **3** problems
+**412** reports merged into #4471 · **3** problems (5 one-day moves are also in the parser count)
 
 | problem | reports | tenants | seen |
 |---|---|---|---|
-| parser reads dates month first | 374 | 11 | 2026-04-01 → 2026-10-04 |
+| parser reads dates month first | 379 | 11 | 2026-04-01 → 2026-10-04 |
 | booking-v3 form hint says MM/DD/YYYY | 33 | 3 | 2026-04-17 → 2026-09-22 |
 | date moves by one day | 5 | 5 | 2026-04-02 → 2026-10-04 |
 
-Tickets: issues #1 (374), #2 (33), #3 (5).
+Tickets: issues #1 (379), #2 (33), #3 (5).
 
 ## The problems
 

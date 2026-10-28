@@ -10,9 +10,10 @@
   // A one-day move is a different symptom from a flipped date, whatever the tenant's locale says.
   const oneDay = $derived(merged.filter((r) => notes.oneDayMove.includes(r.id)));
   const rest = $derived(merged.filter((r) => !notes.oneDayMove.includes(r.id)));
-  const parser = $derived(rest.filter((r) => causeOf(r, tenantOf(r)) === 'parser'));
-  const hint = $derived(rest.filter((r) => causeOf(r, tenantOf(r)) === 'hint'));
-  const unplaced = $derived(rest.length - parser.length - hint.length);
+  // The desk counts by tenant: the one-day moves sit in the parser count and are footnoted.
+  const parser = $derived(merged.filter((r) => causeOf(r, tenantOf(r)) === 'parser'));
+  const hint = $derived(merged.filter((r) => causeOf(r, tenantOf(r)) === 'hint'));
+  const unplaced = $derived(merged.length - parser.length - hint.length);
   const span = (rs: Report[]) => {
     const d = rs.map((r) => r.receivedAt.slice(0, 10)).sort();
     return `${d[0]} → ${d[d.length - 1]}`;
@@ -20,7 +21,7 @@
   const tenants = (rs: Report[]) => new Set(rs.map((r) => r.tenant)).size;
 </script>
 
-<p><strong>{merged.length}</strong> reports merged into #{ticket} · <strong>3</strong> problems{unplaced ? ` · ${unplaced} unplaced` : ''}</p>
+<p><strong>{merged.length}</strong> reports merged into #{ticket} · <strong>3</strong> problems ({oneDay.length} one-day moves are also in the parser count){unplaced ? ` · ${unplaced} unplaced` : ''}</p>
 
 <table>
   <thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th></tr></thead>
